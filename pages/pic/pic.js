@@ -29,6 +29,16 @@ Page({
 
     this.getPic()
   },
+  /**
+   * 生命周期函数--分享
+   */
+  onShareAppMessage() {
+    return {
+      title: 'Syreo Space',
+      path: '/pages/self/self',
+      imageUrl: 'https://static.syreo.cn/92940e3d-6a63-4042-a517-9c658a4b7b56.png'
+    };
+  },
   getPic() {
 
     SERVER.getPic(this.data.id).then(res => {
@@ -87,7 +97,6 @@ Page({
         title: '上传中...',
         mask: true
       })
-
       SERVER.addPic({
         filePath: res.tempFilePaths[0],
         name: 'file',
@@ -95,7 +104,6 @@ Page({
           id: this.data.id
         }
       }).then(res => {
-
         wx.hideLoading()
         wx.showToast({
           title: '照片上传成功，请到后台管理系统中审核。',

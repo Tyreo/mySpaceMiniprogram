@@ -2,7 +2,8 @@
   "pages": [
     "pages/self/self",
     "pages/pics/pics",
-    "pages/pic/pic"
+    "pages/pic/pic",
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",

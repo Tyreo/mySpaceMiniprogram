@@ -12,10 +12,20 @@
   padding: 20rpx 0;
 }
 
+.userinfo-avatar-box {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
   border-radius: 50%;
   animation: loading 10s linear infinite;
 }

@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="setting-container">
+  <view class="line-box">
+    <view>头像</view>
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="userinfo-avatar" src="{{avatar || userInfo.data.avatar}}" mode="cover"></image>
+    </button>
+  </view>
+  <form catchsubmit="setUserInfo">
+    <view class="line-box no-border">
+      <view>昵称</view>
+      <input name="name" type="nickname" class="weui-input" value="{{userInfo.data.name}}" placeholder="请输入昵称" />
+    </view>
+    <button class="submit" form-type="submit">保存</button>
+  </form>
+
+</view>

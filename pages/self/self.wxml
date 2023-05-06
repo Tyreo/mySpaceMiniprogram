@@ -7,7 +7,9 @@
         <image class="userinfo-avatar" src="{{userInfo.data.avatar}}" mode="cover"></image>
         <text class="userinfo-nickname">Hello, {{userInfo.data.name}}</text>
       </view>
-      <button class="btn-qcode" bindtap="scanQrcodeHandle">扫码登录后台系统</button>
+      <button class="btn-qcode" bindtap="toSetting">设置</button>
+      <view></view>
+      <button wx:if="{{userInfo.data.isAdmin}}" class="btn-qcode" bindtap="scanQrcodeHandle">扫码登录后台系统</button>
     </block>
   </view>
 </view>

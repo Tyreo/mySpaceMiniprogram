@@ -4,6 +4,7 @@ const SERVER_API = {
   ALBUM: '/album',
   LOGIN: '/login',
   PHOTO: '/photo',
+  AVATAR: '/avatar',
   USER: '/user',
   MY: '/my'
 }
@@ -56,7 +57,7 @@ const HTTP = (url, option = {}, fn = 'request') => {
         title: '错误提示：网络异常',
         icon: 'none',
         mask: true,
-        duration: 2000
+        duration: 20000
       })
 
       reject(e)
@@ -81,6 +82,9 @@ const SERVER = {
   },
   addPic(opt) {
     return HTTP(SERVER_API.PHOTO, opt, 'uploadFile')
+  },
+  addAvatar(opt) {
+    return HTTP(SERVER_API.AVATAR, opt, 'uploadFile')
   },
   getPic(id) {
     return HTTP(`/syreo${SERVER_API.ALBUM}/${id}`)

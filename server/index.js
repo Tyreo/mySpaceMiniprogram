@@ -1,4 +1,4 @@
-const HOST = 'http://127.0.0.1:4004'
+const HOST = 'https://api.syreo.cn'
 const SESSION_KEY = 'sessionKey'
 const SERVER_API = {
   ALBUM: '/album',

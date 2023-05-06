@@ -7,7 +7,7 @@
       </view>
     </view>
     <block wx:if="{{pics.length>0}}">
-      <view class="box-item" bindtap="toDetail" wx:for="{{pics}}" wx:key="{{item._id}}" data-id="{{item._id}}" data-name="{{item.name}}">
+      <view class="box-item" bindlongpress="modalShow" bindtap="toDetail" wx:for="{{pics}}" wx:key="{{item._id}}" data-id="{{item._id}}" data-name="{{item.name}}">
         <image class="item-img" mode="aspectFill" src="{{item.fm?item.fm:fm}}"></image>
         <view class="item-name">{{item.name}}</view>
         <view class="item-num">{{item.photoCount}}张</view>
@@ -15,4 +15,16 @@
     </block>
   </view>
   <component-create hidden="{{hidden}}" bind:addPics="onAddPics" bind:goBack="onGoBack"></component-create>
+  <modal catchtap="modalClose" show="{{modalShow}}">
+    <view class="pics-modal-container">
+      <view class="edit item" bindtap="showEditAlbum">修改名称</view>
+      <view class="delete item" bindtap="deleteAlbum">删除相册</view>
+    </view>
+  </modal>
+  <modal catchtap="closeEditAlbum" show="{{showEdit}}">
+    <view class="pics-modal-container">
+      <input value="{{newAlbumName}}" class="edit-input" bindinput="editName" placeholder="请输入" />
+      <button bindtap="saveName">保存</button>
+    </view>
+  </modal>
 </view>

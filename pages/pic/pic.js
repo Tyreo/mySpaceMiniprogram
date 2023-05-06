@@ -50,7 +50,11 @@ Page({
         } = res.data.data
 
         let pics = count ? this.reSort(data) : []
-
+        if (!pics.length) {
+          this.setData({
+            fm: SERVER.FM
+          })
+        }
         this.setData({
           pics,
           nums: count
@@ -125,6 +129,26 @@ Page({
     wx.previewImage({
       current: current,
       urls: [current]
+    })
+  },
+  deletePhoto(e) {
+    wx.vibrateShort();
+    const id = e.target.dataset.id
+    wx.showModal({
+      title: '删除',
+      content: '确定要删除该照片吗？',
+      complete: (res) => {
+        if (res.cancel) {
+          console.log('cancel delete');
+        }
+        if (res.confirm) {
+          SERVER.deletePhoto(id).then((res) => {
+            this.getPic()
+          }).catch((error) => {
+            console.log(error);
+          })
+        }
+      }
     })
   }
 })

@@ -1,0 +1,73 @@
+.modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.modal-wrap.show {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.modal-content {
+  display: inline-block;
+  box-sizing: border-box;
+  position: fixed;
+  width: auto;
+  height: auto;
+  background: transparent;
+  z-index: 1000;
+}
+
+.modal-content.center {
+  opacity: 0;
+  left: -100%;
+  top: 0;
+  transition: opacity 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+
+.modal-content.center.show {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  transition: opacity 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+
+.modal-content.bottom {
+  transform: translate(-50%, 100%);
+  left: 50%;
+  bottom: 0;
+  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+
+.modal-content.bottom.show {
+  transform: translate(-50%, 0%);
+  left: 50%;
+  bottom: 0;
+  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+
+.modal-content.top {
+  transform: translate(-50%, -100%);
+  left: 50%;
+  top: 0;
+  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+
+.modal-content.top.show {
+  transform: translate(-50%, 0%);
+  left: 50%;
+  top: 0;
+  transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}

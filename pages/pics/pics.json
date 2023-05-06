@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "component-create": "/components/create/create"
+    "component-create": "/components/create/create",
+    "modal": "/components/modal/modal"
   }
 }

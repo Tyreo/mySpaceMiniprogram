@@ -1,4 +1,4 @@
-const HOST = 'https://api.syreo.cn'
+const HOST = 'http://127.0.0.1:4004'
 const SESSION_KEY = 'sessionKey'
 const SERVER_API = {
   ALBUM: '/album',
@@ -88,6 +88,22 @@ const SERVER = {
   },
   getPic(id) {
     return HTTP(`/syreo${SERVER_API.ALBUM}/${id}`)
+  },
+  deletePhoto(id) {
+    return HTTP(`${SERVER_API.PHOTO}/${id}`, {
+      method: 'delete'
+    })
+  },
+  deleteAlbum(id) {
+    return HTTP(`${SERVER_API.ALBUM}/${id}`, {
+      method: 'delete'
+    })
+  },
+  editAlbum(id, data) {
+    return HTTP(`${SERVER_API.ALBUM}/${id}`, {
+      method: 'put',
+      data
+    })
   },
   scanCode(code) {
     return HTTP(`/login/ercode/${code}`)

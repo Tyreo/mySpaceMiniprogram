@@ -52,3 +52,33 @@
   color: #05b9ff;
   font-size: 140rpx;
 }
+
+.pics-modal-container {
+  width: 600rpx;
+  height: auto;
+  padding: 30rpx;
+  background-color: #fff;
+  color: #000;
+  border-radius: 18rpx;
+  text-align: center;
+}
+
+.pics-modal-container .item {
+  padding: 30rpx;
+}
+
+.pics-modal-container .item.delete {
+  color: red;
+}
+
+.pics-modal-container button {
+  background-color: #11b8f5;
+  margin-top: 80rpx;
+  color: #fff;
+}
+
+.pics-modal-container input {
+  margin-top: 40rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}

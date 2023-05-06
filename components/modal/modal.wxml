@@ -1,0 +1,6 @@
+<view class="modal-container">
+	<view class="modal-wrap {{show?'show':''}}" catchtouchmove='stopCatch' data-name='关闭窗口' bindtap='maskTap'></view>
+	<view class="modal-content {{position}} {{show?'show':''}}" data-name='empty阻止事件冒泡' catchtap='stopCatch'>
+		<slot></slot>
+	</view>
+</view>

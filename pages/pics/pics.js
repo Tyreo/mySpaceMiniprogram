@@ -3,7 +3,11 @@ Page({
   data: {
     pics: [],
     hidden: true,
-    fm: SERVER.FM
+    fm: SERVER.FM,
+    modalShow: false,
+    showEdit: false,
+    curAlbum: null,
+    newAlbumName: ''
   },
   onShow() {
     this.getPics()
@@ -67,6 +71,67 @@ Page({
     } = evt.currentTarget.dataset
     wx.navigateTo({
       url: `../pic/pic?id=${id}&name=${name}`
+    })
+  },
+  modalShow: function (e) {
+    wx.vibrateShort();
+
+    this.setData({
+      modalShow: true,
+      curAlbum: e.currentTarget.dataset.id
+    });
+  },
+  modalClose() {
+    this.setData({
+      modalShow: false,
+    });
+  },
+  editName(e) {
+    this.setData({
+      newAlbumName: e.detail.value.trim()
+    })
+  },
+  saveName() {
+    if (!this.data.newAlbumName) return
+    SERVER.editAlbum(this.data.curAlbum, {
+      name: this.data.newAlbumName
+    }).then((res) => {
+      this.getPics()
+      this.closeEditAlbum()
+    }).catch((error) => {
+      console.log(error);
+    })
+  },
+  showEditAlbum() {
+    this.setData({
+      showEdit: true,
+      modalShow: false
+    })
+  },
+  closeEditAlbum() {
+    this.setData({
+      showEdit: false,
+      curAlbum: null,
+      newAlbumName: ''
+    })
+  },
+  deleteAlbum() {
+    this.modalClose()
+    wx.showModal({
+      title: '删除',
+      content: '确定要删除该相册吗？',
+      complete: (res) => {
+        if (res.cancel) {
+          console.log('cancel delete');
+        }
+        if (res.confirm) {
+          SERVER.deleteAlbum(this.data.curAlbum).then((res) => {
+            this.getPics()
+          }).catch((error) => {
+            console.log(error);
+          })
+        }
+      }
     })
   }
 })
